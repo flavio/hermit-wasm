@@ -8,6 +8,8 @@ shortcuts have been taken 😅
 
 The code has some limitations, that are described below.
 
+For more details, checkout [this series](https://flavio.castelli.me/2023/02/07/building-a-unikernel-that-runs-webassembly---part-1/) of blog posts.
+
 ## Goal of the POC
 
 The goal of this Hackweek project has been to learn about
@@ -143,7 +145,5 @@ This is done inside of the `Makefile`, using QEMU `-append` flag.
 
 ### Demo
 
-TODO 
-
-
+![A screencast of the unikernel application running the Spiderlightning http-server demo](https://flavio.castelli.me/images/unikernel-webassembly/demo.gif "It's alive!")
 
