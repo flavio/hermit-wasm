@@ -230,7 +230,7 @@ dependencies = [
  "scheduled-thread-pool",
  "simple_logger",
  "tiny_http",
- "wasmi",
+ "wasmi 0.26.1",
  "wit-bindgen-wasmi",
 ]
 
@@ -817,8 +817,20 @@ checksum = "67730ccf97a313fa2130c262492c99c5b1054604b0be2849e76501df18b171fe"
 dependencies = [
  "spin 0.9.4",
  "wasmi_arena",
- "wasmi_core",
- "wasmparser-nostd",
+ "wasmi_core 0.10.0",
+ "wasmparser-nostd 0.99.0",
+]
+
+[[package]]
+name = "wasmi"
+version = "0.26.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35653e9f82eacc22583f303fa34f4c2d4efdee6521e70b46b6ca4c68c0e432d8"
+dependencies = [
+ "spin 0.9.4",
+ "wasmi_arena",
+ "wasmi_core 0.11.0",
+ "wasmparser-nostd 0.100.1",
 ]
 
 [[package]]
@@ -840,10 +852,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "wasmi_core"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a2bde97906bbc49ad61184db16e5c905e946e747f6febd09b583fc321d70af0"
+dependencies = [
+ "downcast-rs",
+ "libm",
+ "num-traits",
+ "paste",
+]
+
+[[package]]
 name = "wasmparser-nostd"
 version = "0.99.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5d5d5a1286081982312e2c6dc6c4d215ad18da679a75d9ace9c25eb624363a0c"
+dependencies = [
+ "indexmap-nostd",
+]
+
+[[package]]
+name = "wasmparser-nostd"
+version = "0.100.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9157cab83003221bfd385833ab587a039f5d6fa7304854042ba358a3b09e0724"
 dependencies = [
  "indexmap-nostd",
 ]
@@ -992,7 +1025,7 @@ dependencies = [
  "anyhow",
  "bitflags",
  "thiserror",
- "wasmi",
+ "wasmi 0.25.0",
  "wit-bindgen-wasmi-impl",
 ]
 
