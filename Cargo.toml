@@ -15,7 +15,7 @@ route-recognizer = "0.3"
 scheduled-thread-pool = "0.2"
 simple_logger = "4.0.0"
 tiny_http = "0.12.0"
-wasmi = "0.25"
+wasmi = "0.27"
 wit-bindgen-wasmi = { git = "https://github.com/flavio/wit-bindgen.git", branch = "wasmi" }
 
 
