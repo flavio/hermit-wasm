@@ -42,8 +42,8 @@ fn main() -> Result<()> {
 
     let mut store = wasmi::Store::new(&engine, host_state);
 
-    let mut linker = wasmi::Linker::<HostState>::new();
-    HostState::add_to_linker(&mut linker, &mut store).expect("cannot add host functions to linker");
+    let mut linker = wasmi::Linker::<HostState>::new(&engine);
+    HostState::add_to_linker(&mut linker).expect("cannot add host functions to linker");
 
     let instance = linker
         .instantiate(&mut store, &module)

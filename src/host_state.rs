@@ -4,7 +4,7 @@ use crate::keyvalue::{keyvalue, redis::RedisKeyvalueContext};
 use crate::settings::Settings;
 
 use anyhow::Result;
-use wasmi::{AsContextMut, Linker};
+use wasmi::Linker;
 
 pub(crate) struct HostState {
     redis_ctx: RedisKeyvalueContext,
@@ -32,15 +32,12 @@ impl HostState {
         })
     }
 
-    pub(crate) fn add_to_linker(
-        linker: &mut Linker<Self>,
-        store: &mut impl AsContextMut<UserState = Self>,
-    ) -> Result<()> {
-        keyvalue::add_to_linker(linker, store, |ctx: &mut HostState| {
+    pub(crate) fn add_to_linker(linker: &mut Linker<Self>) -> Result<()> {
+        keyvalue::add_to_linker(linker, |ctx: &mut HostState| {
             (&mut ctx.redis_ctx.kv, &mut ctx.redis_ctx.table)
         })?;
 
-        http_server::add_to_linker(linker, store, |ctx: &mut HostState| {
+        http_server::add_to_linker(linker, |ctx: &mut HostState| {
             (
                 &mut ctx.http_server_ctx.server,
                 &mut ctx.http_server_ctx.table,
