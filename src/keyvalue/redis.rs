@@ -156,10 +156,12 @@ impl RedisKeyvalueContext {
         let client = redis::Client::open(format!("redis://{}/", redis_host))
             .map_err(|e| anyhow!("error opening connection: {e}"))?;
 
-        let thread_pool = Arc::new(ScheduledThreadPool::with_name(
-            "r2d2-worker-{}",
-            max_pool_size,
-        ));
+        let thread_pool = Arc::new(
+            ScheduledThreadPool::builder()
+                .num_threads(max_pool_size)
+                .thread_name_pattern("r2d2-worker-{}")
+                .build(),
+        );
 
         debug!("creating connection pool");
         let pool = r2d2::Pool::builder()
