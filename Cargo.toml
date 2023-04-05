@@ -10,7 +10,7 @@ getopts = "0.2"
 log = { version = "0.4", features = ["kv_unstable"]}
 parking_lot = "0.12"
 r2d2 = "0.8"
-redis = { version = "0.22.3", features = ["r2d2"] }
+redis = { version = "0.23.0", features = ["r2d2"] }
 route-recognizer = "0.3"
 scheduled-thread-pool = "0.2"
 simple_logger = "4.1.0"
